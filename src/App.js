@@ -2,16 +2,21 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './style.css';
 
+// Menu Options
 import Menu from './components/Menu';
 import Tables from "./components/Tables";
 import EnrollGraduateStudent from './components/EnrollGraduateStudent';
 import EnrollUndergraduateStudent from './components/EnrollUndergraduateStudent';
 import StudentsPage from "./components/StudentsPage";
-import Courses from "./components/Courses";
 import EnrollStudent from "./components/EnrollStudent";
+import ShowStudentsInClass from "./components/ShowStudentsInClass";
+import GetAllPrerequisites from "./components/GetAllPrerequisites";
+import DropGraduateStudent from "./components/DropGraduateStudent";
+import DeleteStudent from "./components/DeleteStudent";
 
+// Tables
 import Students from "./components/Tables/Students";
-import { Courses as TableCourses} from "./components/Tables/Courses";
+import Courses from "./components/Tables/Courses";
 import Classes from "./components/Tables/Classes";
 import Grades from "./components/Tables/Grades";
 import Logs from "./components/Tables/Logs";
@@ -85,18 +90,23 @@ const App = () => {
     // Calling 4. "Drop Graduate Student from the Class" APIs
 
     return (
+        <div className="newcss">
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Menu />} />
                 <Route path="/tables" element={<Tables students={students}/>} />
+                <Route path="/show-students-in-class" element={<ShowStudentsInClass />}/>
+                <Route path="/get-all-pre-reqs" element={<GetAllPrerequisites />}/>
                 <Route path="/enroll-student" element={<EnrollStudent />} />
+                <Route path="/drop-graduate-student" element={<DropGraduateStudent />} />
+                <Route path="/delete-student" element={<DeleteStudent />} />
+
                 <Route path="/enroll-graduate-student" element={<EnrollGraduateStudent editStudent={editStudent} setEditModeOff={setEditModeOff} editMode={editMode} editFormData={editFormData}  createStudent={createStudent}/>} />
                 <Route path="/enroll-undergraduate-student" element={<EnrollUndergraduateStudent />} />
-                <Route path="/show-all-courses" element={<Courses />} />
                 <Route path="/show-all-students" element={<StudentsPage editForm={editForm} students={students} deleteStudent={deleteStudent}/>} /> 
 
                 <Route path="/students-table" element={<Students />} />
-                <Route path="/courses-table" element={<TableCourses />} />
+                <Route path="/courses-table" element={<Courses />} />
                 <Route path="/classes-table" element={<Classes />} />
                 <Route path="/grades-table" element={<Grades />} />
                 <Route path="/logs-table" element={<Logs />} />
@@ -106,6 +116,7 @@ const App = () => {
 
             </Routes>
         </BrowserRouter>
+        </div>
     );
   };
 

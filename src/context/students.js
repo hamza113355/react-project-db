@@ -6,7 +6,6 @@ const StudentsContext = createContext();
 
 const Provider = ({ children }) => {
     const [students, setStudents] = useState([]);
-    const [count, setCount] = useState(0);
 
     // tables directory states
     const [classesData, setClassesData] = useState([]);
@@ -17,19 +16,13 @@ const Provider = ({ children }) => {
 
     console.log("Provider: ", students);
 
-    const incValue = () => {
-        setCount(count+1);
-    }
-
     // Tables Directory "api calls"
     useEffect(() => {
         setClassesData(classesDataAPI.classes);
     }, []);
 
-    const fetchClassesData = () => {
-
-    }
     
+
 
     const shareData = {
         fetchData,
